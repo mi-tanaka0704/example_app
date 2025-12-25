@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -29,15 +30,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Map<String, String> languages = {
-    'Python': 'Guido van Rossum',
-    'Ruby': 'Matumoto Yukihiro',
-    'PHP': 'Rasmus Lerdorf'
-  };
+  int _counter = 0;
 
-  void _removeLanguage(String key) {
+  void _incrementCounter() {
     setState(() {
-      languages.remove(key);
+      _counter++;
     });
   }
 
@@ -49,44 +46,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: languages.isEmpty
-            ? const Text(
-          'No languages available',
-          style: TextStyle(fontSize: 18),
-        )
-            : ListView.builder(
-          itemCount: languages.length,
-          itemBuilder: (context, index) {
-            String language = languages.keys.elementAt(index);
-            String creator = languages[language]!;
-
-            return Card(
-              margin: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
-              child: ListTile(
-                leading: CircleAvatar(
-                  child: Text(language[0]),
-                ),
-                title: Text(
-                  language,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(creator),
-                trailing: IconButton(
-                  icon: const Icon(Icons.delete, color: Colors.red),
-                  onPressed: () {
-                    _removeLanguage(language);
-                  },
-                ),
-              ),
-            );
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
