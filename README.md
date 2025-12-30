@@ -19,7 +19,7 @@ feature/study_intを選択
 
 <img width="599" height="87" alt="スクリーンショット 2025-12-29 15 35 50" src="https://github.com/user-attachments/assets/7c96f6af-2021-4c39-bef5-f491534fdc96" />
 
-### ステージングにあげる（+マークを押す）
+### ステージングにあげる（変更横+マークを押す）
 
 <img width="412" height="211" alt="スクリーンショット 2025-12-29 15 41 43" src="https://github.com/user-attachments/assets/51ab494f-4426-4539-8afc-e727d31b447f" />
 
