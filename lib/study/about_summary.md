@@ -30,3 +30,5 @@ try-catch-finally文
 static
 
 クラス内でのメソッド
+
+テスト
