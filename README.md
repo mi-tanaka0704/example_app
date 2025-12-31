@@ -16,8 +16,8 @@
 
 <img width="604" height="331" alt="スクリーンショット 2025-12-29 15 33 22" src="https://github.com/user-attachments/assets/ee698e57-87d0-411f-9696-321497e66db8" />
 
-⚠️ここでファイルが消されるようなことが発生した場合は以下を行う
-git fetch
+⚠️ここでファイルが消されるようなことが発生した場合は以下を行う  
+git fetch  
 git pull
 
 ### feature/ブランチ名を入力
@@ -68,8 +68,9 @@ git pull
 
 ## ターミナルで以下のコマンドを実施
 
-git fetch
-git pull
+git fetch  
+git switch develop  
+git pull  
 
 
 
