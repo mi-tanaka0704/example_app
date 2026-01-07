@@ -122,8 +122,9 @@ git pull
 <img width="879" height="448" alt="スクリーンショット 2025-12-31 11 55 31" src="https://github.com/user-attachments/assets/6026a6a9-d5f1-4182-9fdc-ece0b6bc72d0" />
 
 ### プロジェクト名を入力
-キャプチャは-を使用しているのでNGとなっている。  
-_ならOK
+キャプチャは-を使用しているのでNGとなっている  
+_ならOK  
+
 <img width="615" height="98" alt="スクリーンショット 2025-12-31 11 56 41" src="https://github.com/user-attachments/assets/3cf43509-caba-4890-9ac0-fe71a12175d9" />
 
 ### 下からターミナルを出す
@@ -149,15 +150,19 @@ flutter project first commit
 
 ### developブランチを作成する
 
-手順割愛  
 
 最初は以下なので注意  
+main ブランチ（青文字）を選択する
 
 <img width="602" height="138" alt="スクリーンショット 2025-12-31 12 22 30" src="https://github.com/user-attachments/assets/5645f8a9-632e-4a31-a658-ceca77047e04" />
 
-ステージングにあげてコミット  
-<img width="957" height="956" alt="スクリーンショット 2025-12-31 12 25 22" src="https://github.com/user-attachments/assets/7fa3f310-9bbd-4b56-887b-441eaf4b7a3b" />
+枠内入力なしでブランチの発行を選択する（キャプチャは例。他手順の流用のため枠内も文字が違う）  
 
+<img width="390" height="146" alt="スクリーンショット 2025-12-29 15 44 28" src="https://github.com/user-attachments/assets/7cec2c8c-7a1d-4483-a2b7-8b7527645033" />
+
+以下のような状態となる  
+
+<img width="961" height="319" alt="スクリーンショット 2026-01-07 23 43 07" src="https://github.com/user-attachments/assets/71b0d0ed-d99c-4e20-9eca-85faf12d6130" />
 
 
 ## GitHubでの作業内容
@@ -180,5 +185,8 @@ Settings→Default branch内の鉛筆の右隣を選択
 
 <img width="948" height="662" alt="スクリーンショット 2025-12-31 12 28 25" src="https://github.com/user-attachments/assets/e15ebc93-efdc-468b-9f18-164f0cf2a14e" />
 
-![Uploading スクリーンショット 2025-12-31 12.33.24.png…]()
+
+## 最初に戻る
+
+リモートの上げ方
 
