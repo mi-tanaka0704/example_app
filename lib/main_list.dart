@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
@@ -60,6 +60,15 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+
+            const SizedBox(height: 24),
+
+            const Text('history(Listの中身をそのまま表示)'),
+            Text('$_history'),
+
+            const SizedBox(height: 24),
+            const Text('history(Listの中身をjoinメソッドを使用して表示)'),
+            Text(_history.join(', ')),
           ],
         ),
       ),
