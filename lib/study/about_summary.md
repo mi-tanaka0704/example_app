@@ -339,9 +339,48 @@ class MyWidget extends StatelessWidget {
     return Text(labels.join(', '));
   }
 }
+```
+---
 
+### ④ 可変長Listと固定長リストの2種類がある
+- 可変長/固定長 = Listオブジェクト自体の性質（add/removeできるか）
+
+#### 可変長リスト
+- リテラルで作られるのは可変長リスト
+
+```Dart
+final baseList = [0, 1, 2, 3];
+
+baseList.add(4);      // OK（長さが変えられる）
+baseList.removeAt(0); // OK
+baseList[0] = 99;     // OK（要素も変更できる）
+
+baseList = [9, 9, 9]; // ❌ NG（finalなので再代入不可）
+```
+
+#### 固定長リスト
+- Listの名前付きコンストラクタunmofiableを使うと、そのListは固定長となる
+- 固定長Listの要素数を変更しようとすると実行時エラーとなる
+
+```Dart
+final baseList = [0, 1, 2, 3];
+// baseListを元に固定長の新しいインスタンスを生成
+final fixedLengthList = List.unmofiable(baseList);
+fixedLengthList.add(4); //実行時エラー
+```
+#### その他：固定長だけど要素は変えられるListもある
+- 説明は割愛
+
+```Dart
+final fixed = List.filled(3, 0, growable: false);
+
+fixed.add(1);    // 長さ変更はダメ
+fixed[0] = 10;   // 要素変更はOK
 
 ```
+
+
+
 
 
 ```Dart
