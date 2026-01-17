@@ -135,22 +135,37 @@ const ImageUrl({super.key, this.imageUrl});
   - 結論：どのwidgetでも渡せる。また渡す経路が違う。  
   つまり渡す渡さないとか言う話ではなかった。
 
-- keyについて：Flutterの既存Widget（TextとかContainerとかの標準）の場合
+- keyを渡し方について：Flutterの既存Widget（TextとかContainerとかの標準）の場合
   - 多くの標準Widgetはそもそもkey:を引数に持っている
-  - 以下の通り、自分でsuper.keyを書かなくても「keyを渡せない」わけじゃなく、それぞれのWidgetのコンストラクタに直接 key:を渡す形になる
+  - 以下の通り、自分でsuper.keyを書かなくても「keyを渡せない」わけじゃなく、  
+    それぞれのWidgetのコンストラクタに直接 key:を渡す形になる
   - 例：Text('hi', key: const ValueKey('t'));
     - Text ウィジェットの コンストラクタ呼び出し
     - 第1引数に 'hi'
     - 名前付き引数 key: に const ValueKey('t')を渡して、  
       Text のインスタンス（Widget）を生成。
-    - ValueKey('t') は「このWidgetは “t” という値で識別してね」という識別子（Key）を作って渡している、というイメージ。
+    - ValueKey('t') は「このWidgetは“t”という値で識別してね」という識別子（Key）を作って渡しているイメージ。
   - 例：Container(key: const ValueKey('c'));
 
-- keyについて：自作Widgetの場合
-- 
+- keyの渡し方について：自作Widgetの場合
+  - 自作Widgetのコンストラクタにkey:を受け取れる引数として用意する  
+（例：{super.key, ...}）
+  - こうしておくと、呼び出し側（そのWidgetを作る側）がImageUrl(key: ...)のようにkeyを渡せる
+  - 受け取ったkeyはsuper.keyによって、  
+  継承元の StatelessWidget（さらに Widget）が持つkeyとして保持される
+  
+```Dart
+class ImageUrl extends StatelessWidget {
+// keyを受け取れるようにする（受け口）
+  const ImageUrl({super.key, required this.imageUrl});
+  final String imageUrl;
+}
 
+// 呼び出し側（ImageUrl を作る側）がkeyを渡せる
+ImageUrl(key: const ValueKey('x'), imageUrl: url); 
+```
 
 - keyの渡し方の整理 
-  - 標準Widget：それぞれが key: を受けるので、必要なら普通に渡す
+  - 標準Widget：それぞれがkey:を受けるので、必要なら普通に渡す
   - 自作Widget：再利用するなら基本super.keyを付けておく（渡せるようにする）
   - 完全に使い捨ての小Widgetなら、付けなくても困らないことは多いらしい
