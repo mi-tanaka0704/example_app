@@ -1,4 +1,4 @@
-# Flutterのパッケージ（flutter_svg,flutter_gen）
+# Flutterのパッケージ導入（flutter_svg,flutter_gen）
 
 ## 導入背景
 - これまで、以下のようなアイコン（メールやキーなど）を表示させるために、Flutter標準のアイコンであるIconData型のものを使用していた
@@ -38,7 +38,7 @@
 
 ## 導入手順
 - 公式の「Installing」を選択
-- flutter pub add flutter_svgをターミナルで実施
+- flutter pub add flutter_svgをターミナルで実施（暗黙でflutter pub getが走っている）
     - 実行後、pubspec.yamlのdependenciesに追加されていることを確認。
 - または、pubspec.yamlに以下を追加し、flutter pub getする
 
@@ -46,24 +46,46 @@
 dependencies:
   flutter_svg: ^2.2.3
 
-// ここは手動で追加した気がする
+# ここは手動で追加した気がする
 flutter:
   assets:
     - assets/svg/
 ```
 
 ## 問題点
-- これでもうsvgは使えるようにはなったが問題点がある
-- 文字列パス（'assets/.../foo.svg'）を手で書く必要がある（Stringなのでラーとならない）= ハードコーディング
-- パスの打ち間違い・存在しないファイル参照になる可能性あり
+- これでsvgは使えるようにはなったが問題点がある
+  - 文字列パス（'assets/.../foo.svg'）を手で書く必要がある（Stringなのでラーとならない）= ハードコーディング
+  - パスの打ち間違い・存在しないファイル参照になる可能性あり
 
 ```Dart
+// インポートする
+import 'package:flutter_svg/flutter_svg.dart';
+
 // https://zenn.dev/joo_hashi/articles/c6940c20ce06f7の完成品欄
 
 // 省略
+// SvgPicture.asset()で、assets内のSVGを表示
       body: Center(
         child: SvgPicture.asset(
           'assets/onion.svg',
         ),
 ```
 
+## ここでflutter_genのパッケージが活躍する
+- flutter_genがpubspec.yamlに書いたassetsを元に、Assets.svg.xxxみたいな型安全な参照コード（AssetsというDartコード）を自動生成してくれる
+- これで、flutter_svgの問題点は解決する（補完できるし）
+- 注意点としては、flutter_genはアセットの「参照（パスや型安全なアクセサ）」を生成するだけで、svgを表示する機能は持っていない
+
+## まずは導入しよう（https://pub.dev/packages/flutter_gen）
+- 公式の「Installing」を選択
+- dart pub global activate flutter_genをターミナルで実施
+    - 実行後、pubspec.yamlのdependenciesに追加されていることを確認。
+- または、pubspec.yamlに以下を追加し、flutter pub getする
+
+## flutter_genの仕組み
+1. pubspec.yamlにassetsを書く
+flutter_gen_runner（build_runner）が assets を読み取る
+
+lib/gen/assets.gen.dart みたいなファイルを 自動生成する
+
+アプリ側はその生成コードの Assets.svg.mailIcon を参照できる
