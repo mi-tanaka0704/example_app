@@ -86,6 +86,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 ## pubspec.yaml
 - https://zenn.dev/maropook/articles/ec52178cb7152a
+- https://dev.classmethod.jp/articles/flutter-fluttergen-2025/
 ```yaml
 dev_dependencies:
   flutter_test:
@@ -151,3 +152,14 @@ String get mailIcon => 'assets/svg/mail_icon.svg';
 // なので表示するときは、flutter_svgのSvgPicture.asset()を使用する
 SvgPicture.asset(Assets.svg.mailIcon);// Stringを渡してSVG表示
 ```
+
+## png/jpgの場合
+- png/jpg を置いて、flutter_genがAssetGenImage型として生成してくれたら.image()と.pathが使える
+  - Assets.images.smilePicture.image(...) → Image（Widget）を返す
+  - Assets.images.smilePicture.path → String（パス）を返す
+- プロジェクト設定によっては、SVGもSvgGenImage型になって.svg()メソッドでWidgetを作れるらしい（未調査）
+```Dart
+// 例
+AssetGenImage get smilePicture => const AssetGenImage('assets/images/a.png');
+```
+
