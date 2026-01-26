@@ -79,7 +79,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 ## まずは導入しよう（https://pub.dev/packages/flutter_gen）
 - 公式の「Installing」を選択
 - dart pub global activate flutter_genをターミナルで実施→これではダメだった。
-- flutter pub run build_runner build --delete-conflicting-outputs をターミナルで実施し以下を確認する
+- flutter pub add flutter_gen dev:flutter_gen_runner build_runnerをターミナルで実施し以下を確認する
     - pubspec.yamlのdependencies・dev_dependenciesに追加されていること
     - lib/gen/assets.gen.dartファイルが自動生成されること。
 - または、pubspec.yamlに以下を追加し、flutter pub getする
