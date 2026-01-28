@@ -130,8 +130,14 @@ class LoginPage extends StatelessWidget {
 }
 ```
 
-## 画面遷移のパターンは他にもたくさんある
+## 画面遷移のパターンは他にもたくさんある（go/push）（未着手）
 - https://qiita.com/tks_00/items/927b69e302377c5184f4
+
+## go_routerでログイン判定も可能（未着手）
+- https://qiita.com/Harx02663971/items/9a7796068fdb04bbaa61
+
+## 画面遷移時にパラメーターも渡せる（未着手）
+- https://tech.studyplus.co.jp/entry/2023/12/18/100000
 
 ## MaterialApp.routerについて
 - main.dartでMaterialApp.routerを使用し起動しているが何をしているのか
